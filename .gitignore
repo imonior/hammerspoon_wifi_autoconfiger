@@ -13,3 +13,6 @@ switcher.log
 
 # Plan docs (internal)
 .trae/
+
+# AI 工具目录（跨平台一致忽略，非项目发布物，仅本地保留）
+.workbuddy/
