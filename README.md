@@ -1,6 +1,6 @@
 # hammerspoon-wifi-switcher
 
-> Wi-Fi 智能 IP 切换器 — A high-performance, fully async macOS network auto-switcher built on Hammerspoon.
+> Wi-Fi Auto Switcher based SSID  — A high-performance, fully async macOS network auto-switcher built on Hammerspoon.
 
 Automatically switches network configurations (static IP / DHCP / custom DNS / IPv6) based on the connected Wi-Fi SSID. Detects SSID changes in real-time and applies the matching profile within seconds.
 
@@ -25,7 +25,7 @@ Automatically switches network configurations (static IP / DHCP / custom DNS / I
 curl -fsSL https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/main/scripts/install.sh | bash
 ```
 
-### China Mirror (国内加速)
+### China Mainland Mirror (中国大陆地区加速)
 
 如果直连 GitHub 较慢，可使用代理镜像一键安装：
 
@@ -75,7 +75,7 @@ Updates preserve your `config.json` (backed up to `config.json.backup` during up
 curl -fsSL https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/main/scripts/uninstall.sh | bash
 ```
 
-国内镜像：
+中国大陆地区镜像：
 
 ```bash
 curl -fsSL https://ghfast.top/https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/main/scripts/uninstall.sh | bash
