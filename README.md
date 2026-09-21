@@ -1,6 +1,6 @@
-# hammerspoon-wifi-switcher
+# hammerspoon-wifi-autoconfiger
 
-> Wi-Fi Auto Switcher based SSID  — A high-performance, fully async macOS network auto-switcher built on Hammerspoon.
+> Wi-Fi Auto configer based SSID  — A high-performance, fully async macOS network auto-switcher built on Hammerspoon.
 
 Automatically switches network configurations (static IP / DHCP / custom DNS / IPv6) based on the connected Wi-Fi SSID. Detects SSID changes in real-time and applies the matching profile within seconds.
 
