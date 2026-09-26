@@ -1,6 +1,6 @@
-# hammerspoon-wifi-autoconfig
+# wifi-autoconfig-hammerspoon
 
-> Wi-Fi Auto configer based SSID  — A high-performance, fully async macOS network auto-switcher built on Hammerspoon.
+> Wi-Fi Auto config based SSID  — A high-performance, fully async macOS network auto-switcher built on Hammerspoon.
 
 Automatically switches network configurations (static IP / DHCP / custom DNS / IPv6) based on the connected Wi-Fi SSID. Detects SSID changes in real-time and applies the matching profile within seconds.
 
@@ -22,7 +22,7 @@ Automatically switches network configurations (static IP / DHCP / custom DNS / I
 ## Quick Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/imonior/wifi-autoconfig-hammerspoon/main/scripts/install.sh | bash
 ```
 
 ### China Mainland Mirror (中国大陆地区加速)
@@ -30,13 +30,13 @@ curl -fsSL https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/m
 如果直连 GitHub 较慢，可使用代理镜像一键安装：
 
 ```bash
-curl -fsSL https://ghfast.top/https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/main/scripts/install.sh | bash
+curl -fsSL https://ghfast.top/https://raw.githubusercontent.com/imonior/wifi-autoconfig-hammerspoon/main/scripts/install.sh | bash
 ```
 
 更新时同样加上代理前缀：
 
 ```bash
-curl -fsSL https://ghfast.top/https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/main/scripts/install.sh | bash -s -- --update
+curl -fsSL https://ghfast.top/https://raw.githubusercontent.com/imonior/wifi-autoconfig-hammerspoon/main/scripts/install.sh | bash -s -- --update
 ```
 
 也可以通过环境变量或 `--proxy` 参数指定任意代理：
@@ -51,14 +51,14 @@ bash install.sh --proxy https://ghfast.top/
 
 This will:
 1. Install Hammerspoon (via Homebrew or direct download) if not present
-2. Download the project tarball and install to `~/.hammerspoon/wifi_ip_switcher/`
-3. Inject `require("wifi_ip_switcher.init")` into `~/.hammerspoon/init.lua` (idempotent)
+2. Download the project tarball and install to `~/.hammerspoon/wifi_ip_config/`
+3. Inject `require("wifi_ip_config.init")` into `~/.hammerspoon/init.lua` (idempotent)
 4. Reload Hammerspoon
 
 ## Update
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/main/scripts/install.sh | bash -s -- --update
+curl -fsSL https://raw.githubusercontent.com/imonior/wifi-autoconfig-hammerspoon/main/scripts/install.sh | bash -s -- --update
 ```
 
 Or locally:
@@ -72,13 +72,13 @@ Updates preserve your `config.json` (backed up to `config.json.backup` during up
 ## Uninstall
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/main/scripts/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/imonior/wifi-autoconfig-hammerspoon/main/scripts/uninstall.sh | bash
 ```
 
 中国大陆地区镜像：
 
 ```bash
-curl -fsSL https://ghfast.top/https://raw.githubusercontent.com/imonior/hammerspoon-wifi-switcher/main/scripts/uninstall.sh | bash
+curl -fsSL https://ghfast.top/https://raw.githubusercontent.com/imonior/wifi-autoconfig-hammerspoon/main/scripts/uninstall.sh | bash
 ```
 
 Or locally:
@@ -88,24 +88,24 @@ bash scripts/uninstall.sh              # Interactive (prompts for config backup)
 bash scripts/uninstall.sh --force      # Skip prompts, auto-backup config to ~/Desktop/
 ```
 
-The uninstaller backs up your `config.json` to `~/Desktop/wifi_ip_switcher_config_backup.json` before removing the module. Hammerspoon itself is not removed.
+The uninstaller backs up your `config.json` to `~/Desktop/wifi_ip_config_config_backup.json` before removing the module. Hammerspoon itself is not removed.
 
 ## Manual Install
 
 1. Install [Hammerspoon](https://hammerspoon.org)
-2. Copy project files to `~/.hammerspoon/wifi_ip_switcher/`:
+2. Copy project files to `~/.hammerspoon/wifi_ip_config/`:
    ```bash
-   mkdir -p ~/.hammerspoon/wifi_ip_switcher/ui/templates ~/.hammerspoon/wifi_ip_switcher/ui/icons
-   cp src/*.lua ~/.hammerspoon/wifi_ip_switcher/
-   cp src/ui/*.lua ~/.hammerspoon/wifi_ip_switcher/ui/
-   cp src/ui/templates/*.html ~/.hammerspoon/wifi_ip_switcher/ui/templates/
-   cp src/ui/icons/*.svg ~/.hammerspoon/wifi_ip_switcher/ui/icons/
-   cp config.example.json ~/.hammerspoon/wifi_ip_switcher/config.json
+   mkdir -p ~/.hammerspoon/wifi_ip_config/ui/templates ~/.hammerspoon/wifi_ip_config/ui/icons
+   cp src/*.lua ~/.hammerspoon/wifi_ip_config/
+   cp src/ui/*.lua ~/.hammerspoon/wifi_ip_config/ui/
+   cp src/ui/templates/*.html ~/.hammerspoon/wifi_ip_config/ui/templates/
+   cp src/ui/icons/*.svg ~/.hammerspoon/wifi_ip_config/ui/icons/
+   cp config.example.json ~/.hammerspoon/wifi_ip_config/config.json
    ```
 3. Add to `~/.hammerspoon/init.lua`:
    ```lua
    -- ~/.hammerspoon/init.lua
-   require("wifi_ip_switcher.init")
+   require("wifi_ip_config.init")
    ```
 4. Reload Hammerspoon (menu bar icon → Reload Config, or `hs.reload()` in console)
 
@@ -122,7 +122,7 @@ end)
 
 ## How It Works
 
-### Auto-switching flow
+### Auto-configing flow
 
 1. `hs.wifi.watcher` detects SSID change → triggers `performNetworkAudit()`
 2. Looks up config for the new SSID (falls back to `__DEFAULT__`, then raw DHCP)
@@ -153,7 +153,7 @@ end)
 
 ## Configuration
 
-Edit `~/.hammerspoon/wifi_ip_switcher/config.json`, or use the built-in editor (menu bar icon → Open Settings).
+Edit `~/.hammerspoon/wifi_ip_config/config.json`, or use the built-in editor (menu bar icon → Open Settings).
 
 ### Config fields
 
@@ -199,7 +199,7 @@ Edit `~/.hammerspoon/wifi_ip_switcher/config.json`, or use the built-in editor (
 The module follows a **presentation-core separation** architecture — presentation layer and core logic are fully decoupled for performance and maintainability:
 
 ```
-hammerspoon-wifi-switcher/
+wifi-autoconfig-hammerspoon/
 ├── scripts/                  # Installer scripts
 │   ├── install.sh            # One-command installer (--update / --force / --help)
 │   └── uninstall.sh          # Uninstaller (--force)
@@ -243,7 +243,7 @@ All network operations are **fully async** using `hs.timer.doAfter` — no block
 
 **Config not applying on startup**: The module retries 5 times (1s interval) waiting for WiFi to connect after Hammerspoon loads. Check logs via menu bar → View Logs for `runInitialAudit` entries.
 
-**Log file location**: `~/.hammerspoon/wifi_ip_switcher/switcher.log`
+**Log file location**: `~/.hammerspoon/wifi_ip_config/switcher.log`
 
 ## License
 
